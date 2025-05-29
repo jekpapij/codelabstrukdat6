@@ -5,7 +5,6 @@ public class LogistikGraph {
     private LinkedList<Integer> adj[];
     private int[][] adjacencyMatrix;
 
-    // Konstruktor untuk membuat graph dengan 5 gudang
     LogistikGraph(int v) {
         vertices = v;
         adj = new LinkedList[v];
@@ -16,13 +15,11 @@ public class LogistikGraph {
         }
     }
 
-    // Menambahkan jalur pengiriman (edge)
     void addEdge(int src, int dest) {
         adj[src].add(dest);
         adjacencyMatrix[src][dest] = 1;
     }
 
-    // Menampilkan adjacency matrix
     void displayAdjacencyMatrix() {
         System.out.println("Adjacency Matrix:");
         System.out.print("   ");
@@ -40,7 +37,6 @@ public class LogistikGraph {
         }
     }
 
-    // Implementasi BFS
     void BFS(int startVertex) {
         boolean[] visited = new boolean[vertices];
         Queue<Integer> queue = new LinkedList<>();
@@ -64,7 +60,6 @@ public class LogistikGraph {
         System.out.println();
     }
 
-    // Implementasi DFS
     void DFS(int startVertex) {
         boolean[] visited = new boolean[vertices];
         System.out.print("DFS traversal dari Gudang " + startVertex + ": ");
@@ -72,7 +67,6 @@ public class LogistikGraph {
         System.out.println();
     }
 
-    // Helper method untuk DFS rekursif
     void DFSUtil(int vertex, boolean[] visited) {
         visited[vertex] = true;
         System.out.print("G" + vertex + " ");
@@ -85,10 +79,8 @@ public class LogistikGraph {
     }
 
     public static void main(String[] args) {
-        // Membuat graph dengan 5 gudang (G0, G1, G2, G3, G4)
         LogistikGraph graph = new LogistikGraph(5);
 
-        // Menambahkan 7 jalur pengiriman
         graph.addEdge(0, 1); // G0 -> G1
         graph.addEdge(0, 2); // G0 -> G2
         graph.addEdge(1, 3); // G1 -> G3
@@ -102,14 +94,11 @@ public class LogistikGraph {
         System.out.println("Total jalur pengiriman: 7");
         System.out.println();
 
-        // Menampilkan adjacency matrix
         graph.displayAdjacencyMatrix();
         System.out.println();
 
-        // Menjalankan BFS dari gudang A (G0)
         graph.BFS(0);
 
-        // Menjalankan DFS dari gudang A (G0)
         graph.DFS(0);
 
         System.out.println();
